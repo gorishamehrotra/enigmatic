@@ -4,12 +4,12 @@
   "env": {
     "FB_PAGE_TOKEN": {
         "description": "Facebook Messenger Access Token",
-        "value":"",
+        "value":"EAAZAZBurkQJZA0BAHKRKSYEhojPPIEWT00uGbmbz0TynZBFFg9cea7iZCd21LaYbrT5dlcuZCyizrdZA3zDo59WmY5kCKSkwGqq0MG5lMwIgcUrfCvMf8i2JMMANKk4wcVlrI4NUeaxTCXkSlqTUzbaCUWzZAzTZAqZBm21LphKLWfpwZDZD",
         "required":false
     },
     "FB_VERIFY_TOKEN": {
         "description": "Facebook Verify Token",
-        "value":""
+        "value":"test_token"
     },
     "SF_CLIENT_ID": {
         "description": "Consumer Key of your Salesforce Connected App",
