@@ -12,8 +12,9 @@ app.use(bodyParser.json());
 app.get('/webhook', webhook.handleGet);
 app.post('/webhook', webhook.handlePost);
 
-app.get('/privacy', function(req, res) {
-    res.sendFile(path.join(__dirname + '/privacy.html'));
+
+app.get('/privacy', function(request, response) {
+  response.render('pages/index');
 });
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
