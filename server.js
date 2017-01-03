@@ -1,3 +1,4 @@
+console.log(process.env);
 var express = require('express'),
     bodyParser = require('body-parser'),
     webhook = require('./modules/webhook'),
