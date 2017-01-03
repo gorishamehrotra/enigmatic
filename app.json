@@ -12,19 +12,19 @@
         "value":"test_token"
     },
     "SF_CLIENT_ID": {
-        "description": "Consumer Key of your Salesforce Connected App",
+        "description": "3MVG9ZL0ppGP5UrBaRT29EmAPEWgqymgD9I8zEKI8yhL7LcOGKTu8F0YYChfEymPmhn6lGB5zDjs5QUc3w3ML",
         "value":""
     },
     "SF_CLIENT_SECRET": {
-        "description": "Consumer Secret of your Salesforce Connected App",
+        "description": "4521437065752668329",
         "value":""
     },
     "SF_USER_NAME": {
-        "description": "Salesforce username for your integration user",
+        "description": "nigam@concret.io",
         "value":""
     },
     "SF_PASSWORD": {
-        "description": "Salesforce password for your integration user",
+        "description": "qwerty10",
         "value":""
     }
   }
