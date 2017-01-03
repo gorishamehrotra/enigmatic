@@ -6,7 +6,7 @@ let formatAccounts = accounts => {
         elements.push({
             title: account.get("Name"),
             subtitle: account.get("BillingStreet") + ", " + account.get("BillingCity") + " " + account.get("BillingState") + " · " + account.get("Phone"),
-            "image_url": account.get("Picture_URL__c"),
+            "image_url": "http://wallpaper-gallery.net/images/profile-pics/profile-pics-20.jpg",
             "buttons": [{
                 "type":"postback",
                 "title":"View Contacts",
@@ -36,7 +36,7 @@ let formatContacts = contacts => {
         elements.push({
             title: contact.get("Name"),
             subtitle: contact.get("Title") + " at " + contact.get("Account").Name + " · " + contact.get("MobilePhone"),
-            "image_url": contact.get("Picture_URL__c"),
+            "image_url": "http://wallpaper-gallery.net/images/profile-pics/profile-pics-20.jpg",
             "buttons": [
                 {
                     "type": "postback",
