@@ -3,7 +3,7 @@
 let nforce = require('nforce'),
 
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
-   
+
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
     SF_PASSWORD = process.env.SF_PASSWORD;
@@ -29,7 +29,7 @@ let login = () => {
 
 let findAccount = name => {
     return new Promise((resolve, reject) => {
-        let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Picture_URL__c, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
+        let q = "SELECT Id, Name, BillingStreet, BillingCity, BillingState, Phone FROM Account WHERE Name LIKE '%" + name + "%' LIMIT 5";
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
@@ -45,7 +45,7 @@ let findAccount = name => {
 let findContact = name => {
 
     return new Promise((resolve, reject) => {
-        let q = "SELECT Id, Name, Title, Account.Name, Phone, MobilePhone, Email, Picture_URL__c FROM Contact WHERE Name LIKE '%" + name + "%' LIMIT 5";
+        let q = "SELECT Id, Name, Title, Account.Name, Phone, MobilePhone, Email FROM Contact WHERE Name LIKE '%" + name + "%' LIMIT 5";
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
@@ -61,7 +61,7 @@ let findContact = name => {
 let findContactsByAccount = accountId => {
 
     return new Promise((resolve, reject) => {
-        let q = "SELECT Id, Name, Title, Account.Name, Phone, MobilePhone, Email, Picture_URL__c FROM Contact WHERE Account.Id = '" + accountId + "' LIMIT 5";
+        let q = "SELECT Id, Name, Title, Account.Name, Phone, MobilePhone, Email FROM Contact WHERE Account.Id = '" + accountId + "' LIMIT 5";
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
@@ -79,7 +79,7 @@ let getTopOpportunities = count => {
     count = count || 5;
 
     return new Promise((resolve, reject) => {
-        let q = "SELECT Id, Name, Amount, Probability, StageName, CloseDate, Account.Name, Account.Picture_URL__c FROM Opportunity WHERE isClosed=false ORDER BY amount DESC LIMIT " + count;
+        let q = "SELECT Id, Name, Amount, Probability, StageName, CloseDate, Account.Name FROM Opportunity WHERE isClosed=false ORDER BY amount DESC LIMIT " + count;
         org.query({query: q}, (err, resp) => {
             if (err) {
                 console.error(err);
