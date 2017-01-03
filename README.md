@@ -1,39 +1,49 @@
-# node-js-getting-started
+## Salesforce Bot for Facebook Messenger
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+A simple Salesforce bot for Facebook Messenger.
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+See [this blog post](http://coenraets.org/blog/2016/04/salesforce-bot-for-facebook-messenger/) for details.
 
-## Running Locally
+### Create a Connected App
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+1. In Setup, enter **Apps** in the quick find box, and click the Apps link
 
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
+1. In the **Connected Apps** section, click **New**, and define the Connected App as follows:
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+    - Connected App Name: MyConnectedApp
+    - API Name: MyConnectedApp
+    - Contact Email: enter your email address
+    - Enabled OAuth Settings: Checked
+    - Callback URL: http://localhost:8200/oauthcallback.html (You'll change this later)
+    - Selected OAuth Scopes: Full Access (full)
+    - Click **Save**
 
-## Deploying to Heroku
+### Deploy the Messenger Bot
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-or
+1. Make sure you are logged in to the [Heroku Dashboard](https://dashboard.heroku.com/)
+1. Click the button below to deploy the Messenger bot on Heroku:
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+    [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-## Documentation
+1. Fill in the config variables as described.
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
+    - Leave **FB_PAGE_TOKEN** blank for now
+    - For **FB_VERIFY_TOKEN**, enter a passphrase of your choice. You'll have to enter the same passphrase when you create the webhook in Facebook.
+    - For **SF_CLIENT_ID**, enter the Consumer Key of your Salesforce Connected App
+    - For **SF_CLIENT_SECRET**, enter the Consumer Secret of your Salesforce Connected App
+    - For **SF_USER_NAME**, enter the the username of your Salesforce integration user
+    - For **SF_PASSWORD**, enter the the username of your Salesforce integration user
 
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+### Create a Facebook App
+
+1. Follow [these instructions](https://developers.facebook.com/docs/messenger-platform/quickstart) to create a Facebook app. You'll have to create a Facebook page, a Facebook application, and configure Messenger for your application.
+
+    - When asked for a **Callback URL**, enter the URL of the Heroku app you just deployed followed by /webhook. For example:
+        ```
+        https://myapp.herokuapp.com/webhook
+        ```
+    - When the Page Access Token is generated, login to the Heroku Dashboard, and set the Heroku **FB_PAGE_TOKEN** config variable to the value of that token (**Setting>Reveal Config Vars**)
+    - When asked for the **Verify Token**, enter the value you entered for the **FB_VERIFY_TOKEN** config variable when you deployed the Heroku app.
+    - Make sure you select a page in the **Select a page to subscribe your webhook...** dropdown
+    
+1. Visit the Facebook page you created in the previous step, and click the **Message** button. Type **help** in the chat bot. You can continue the conversation with the bot in the Messenger app on your phone or in the browser (http://messenger.com).
