@@ -1,4 +1,5 @@
 console.log(process.env);
+require('dotenv').config();
 var express = require('express'),
     bodyParser = require('body-parser'),
     webhook = require('./modules/webhook'),
