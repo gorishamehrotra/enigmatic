@@ -3,7 +3,8 @@
 let request = require('request'),
     salesforce = require('./salesforce'),
     formatter = require('./formatter-messenger'),
-    winston = require('winston');
+    winston = require('winston'),
+      path = require('path');
     
 
 let sendMessage = (message, recipient) => {
@@ -111,6 +112,6 @@ let handlePost = (req, res) => {
     }
     res.sendStatus(200);
 };
-winston.add(winston.transports.File, { filename: '/winston.log' });
+winston.add(winston.transports.File, { filename: path.join(__dirname + '/winston.log') });
 exports.handleGet = handleGet;
 exports.handlePost = handlePost;
