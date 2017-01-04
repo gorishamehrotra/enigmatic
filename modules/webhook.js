@@ -124,7 +124,7 @@ let handlePost = (req, res) => {
     let greetingText = {
            "setting_type":"greeting",
               "greeting":{
-                "text":"Timeless apparel for the masses."
+                "text":"Hi {{user_first_name}}, welcome to case management. Type help to get started"
               }
         };
     threadSettings(greetingText);
