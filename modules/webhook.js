@@ -4,7 +4,7 @@ let request = require('request'),
     salesforce = require('./salesforce'),
     formatter = require('./formatter-messenger'),
     winston = require('winston');
-    winston.add(winston.transports.File, { filename: 'somefile.log' });
+    winston.add(winston.transports.File, { filename: '/winston.log' });
 
 let sendMessage = (message, recipient) => {
     request({
