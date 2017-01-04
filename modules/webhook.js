@@ -36,6 +36,29 @@ let sendMessage = (message, recipient) => {
     });
 };
 
+let threadSettings = () => {
+    request({
+        url:'https://graph.facebook.com/v2.6/me/thread_settings',
+        qs: {access_token: process.env.FB_PAGE_TOKEN},
+        method: 'POST',
+        json: {
+            "setting_type":"call_to_actions",
+              "thread_state":"new_thread",
+              "call_to_actions":[
+                {
+                  "payload":"USER_DEFINED_PAYLOAD"
+                }
+              ]
+        }
+    }, (error, response) => {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+
 let processText = (text, sender)  => {
     let match;
     match = text.match(/help/i);
@@ -96,6 +119,7 @@ let handleGet = (req, res) => {
 
 let handlePost = (req, res) => {
     logger.info(req);
+    threadSettings();
     let events = req.body.entry[0].messaging;
     winston.log('info', 'Hello distributed log files!'); 
      winston.log('info', events);
