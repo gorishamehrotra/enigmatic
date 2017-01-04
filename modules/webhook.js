@@ -44,6 +44,9 @@ let threadSettings = () => {
         json: {
             "setting_type":"call_to_actions",
               "thread_state":"new_thread",
+              "greeting":{
+                "text":"Timeless apparel for the masses."
+              },
               "call_to_actions":[
                 {
                   "payload":"USER_DEFINED_PAYLOAD"
