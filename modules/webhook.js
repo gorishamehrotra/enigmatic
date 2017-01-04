@@ -36,23 +36,12 @@ let sendMessage = (message, recipient) => {
     });
 };
 
-let threadSettings = () => {
+let threadSettings = (jsonData) => {
     request({
         url:'https://graph.facebook.com/v2.6/me/thread_settings',
         qs: {access_token: process.env.FB_PAGE_TOKEN},
         method: 'POST',
-        json: {
-            "setting_type":"call_to_actions",
-              "thread_state":"new_thread",
-              "greeting":{
-                "text":"Timeless apparel for the masses."
-              },
-              "call_to_actions":[
-                {
-                  "payload":"USER_DEFINED_PAYLOAD"
-                }
-              ]
-        }
+        json: jsonData
     }, (error, response) => {
         if (error) {
             console.log('Error sending message: ', error);
@@ -121,7 +110,24 @@ let handleGet = (req, res) => {
 };
 
 let handlePost = (req, res) => {
-    threadSettings();
+    let getStartJson = {
+            "setting_type":"call_to_actions",
+              "thread_state":"new_thread",
+              
+              "call_to_actions":[
+                {
+                  "payload":"USER_DEFINED_PAYLOAD"
+                }
+              ]
+        };
+    threadSettings(getStartJson);
+    let greetingText = {
+           "setting_type":"greeting",
+              "greeting":{
+                "text":"Timeless apparel for the masses."
+              }
+        };
+    threadSettings(greetingText);
     let events = req.body.entry[0].messaging;
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
