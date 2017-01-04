@@ -69,6 +69,7 @@ let processText = (text, sender)  => {
      match = text.match(/\d/i);
      console.log(match);
     if (match) {
+        consol.log(match[1]);
         salesforce.findCase(match[1]).then(cases => {
             sendMessage({text: `Here are the cases I found matching "${match[1]}":`}, sender);
            // sendMessage(formatter.formatCases(cases), sender)
