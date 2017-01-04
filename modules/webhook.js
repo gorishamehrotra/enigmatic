@@ -81,8 +81,13 @@ let handleGet = (req, res) => {
 };
 
 let handlePost = (req, res) => {
+    console.log("check fb request ####################");
+    console.log(req);
+    console.log("****************************");
     let events = req.body.entry[0].messaging;
     for (let i = 0; i < events.length; i++) {
+        console.log("track EVENT");
+        console.log(event);
         let event = events[i];
         let sender = event.sender.id;
         if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
