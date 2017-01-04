@@ -118,16 +118,10 @@ let handleGet = (req, res) => {
 };
 
 let handlePost = (req, res) => {
-    logger.info(req);
     threadSettings();
     let events = req.body.entry[0].messaging;
-    winston.log('info', 'Hello distributed log files!'); 
-     winston.log('info', events);
     for (let i = 0; i < events.length; i++) {
-       
-       
         let event = events[i];
-        
         let sender = event.sender.id;
         if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
             console.log("1");
