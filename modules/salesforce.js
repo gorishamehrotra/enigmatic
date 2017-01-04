@@ -43,13 +43,14 @@ let findAccount = name => {
 };
 
 let findCase = caseId => {
-        return new Promise((resolve,reject) => {
-            let q = "SELECT Id, Subject , ClosedDate, CreatedDate, Reason  FROM Case WHERE CaseNumber  =  '" + caseId + "'";
-            org.query({query: q}, (err, resp) => {
+    return new Promise((resolve,reject) => {
+        let q = "SELECT Id, Subject , ClosedDate, CreatedDate, Reason  FROM Case WHERE CaseNumber  =  '" + caseId + "'";
+        org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
             } else if (resp.records && resp.records.length>0) {
                 let cases = resp.records;
+                console.log(cases);
                 resolve(cases);
             }
         });
@@ -111,7 +112,6 @@ login();
 
 exports.org = org;
 exports.findAccount = findAccount;
-exports.findCase = findCase;
 exports.findContact = findContact;
 exports.findContactsByAccount = findContactsByAccount;
 exports.getTopOpportunities = getTopOpportunities;

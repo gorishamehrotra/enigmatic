@@ -70,7 +70,7 @@ let processText = (text, sender)  => {
     if (match) {
         salesforce.findCase(match[1]).then(cases => {
             sendMessage({text: `Here are the cases I found matching "${match[1]}":`}, sender);
-            sendMessage(formatter.formatCases(cases), sender)
+           // sendMessage(formatter.formatCases(cases), sender)
         });
         return;
     }
