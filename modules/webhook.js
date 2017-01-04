@@ -167,6 +167,10 @@ let handlePost = (req, res) => {
             } else if (payload[0] === "close_lost") {
                 console.log("33");
                 sendMessage({text: `I'm sorry to hear that. I closed the opportunity "${payload[2]}" as "Close Lost".`}, sender);
+            }else if (payload[0] === "Show Case"){
+                sendMessage({text: 'Please enter your 8 digit Case Number'}, sender);
+            }else if (payload[0] === "Create Case"){
+                sendMessage({text: 'Please enter your email address'}, sender);
             }
         }
     }

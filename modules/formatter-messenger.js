@@ -80,12 +80,12 @@ let formatCaseQuestion = ()=>{
               {
                 "type":"postback",
                 "title":"Show Case",
-                "payload":"USER_DEFINED_PAYLOAD"
+                "payload":"Show Case"
               },
               {
                 "type":"postback",
                 "title":"Create Case",
-                "payload":"USER_DEFINED_PAYLOAD"
+                "payload":"Create Case"
               }
             ]
           }
