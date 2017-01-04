@@ -55,7 +55,7 @@ let processText = (text, sender)  => {
     let match;
     match = text.match(/help/i);
     if (match) {
-        sendMessage({text:
+        sendMessage({
         "message":{
             "attachment":{
               "type":"template",
