@@ -44,7 +44,7 @@ let findAccount = name => {
 
 let findCase = caseId => {
         return new Promise((resolve,reject) => {
-            Let q = "SELECT Subject , ClosedDate, CreatedDate, Reason  Reason FROM Case WHERE CaseNumber  =  '" + caseId + "'";
+            let q = "SELECT Id, Subject , ClosedDate, CreatedDate, Reason  FROM Case WHERE CaseNumber  =  '" + caseId + "'";
             org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
@@ -53,7 +53,7 @@ let findCase = caseId => {
                 resolve(cases);
             }
         });
-        });
+    });
 
 };
 
