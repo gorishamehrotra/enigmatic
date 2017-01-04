@@ -4,7 +4,7 @@ let request = require('request'),
     salesforce = require('./salesforce'),
     formatter = require('./formatter-messenger'),
     winston = require('winston');
-    winston.add(winston.transports.File, { filename: '/winston.log' });
+    
 
 let sendMessage = (message, recipient) => {
     request({
@@ -110,6 +110,6 @@ let handlePost = (req, res) => {
     }
     res.sendStatus(200);
 };
-
+winston.add(winston.transports.File, { filename: '/winston.log' });
 exports.handleGet = handleGet;
 exports.handlePost = handlePost;
