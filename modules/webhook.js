@@ -2,7 +2,9 @@
 
 let request = require('request'),
     salesforce = require('./salesforce'),
-    formatter = require('./formatter-messenger');
+    formatter = require('./formatter-messenger'),
+    winston = require('winston');
+    winston.add(winston.transports.File, { filename: 'somefile.log' });
 
 let sendMessage = (message, recipient) => {
     request({
@@ -81,15 +83,14 @@ let handleGet = (req, res) => {
 };
 
 let handlePost = (req, res) => {
-    console.log("check fb request ####################");
-    console.log(req);
-    console.log("****************************");
+   
     let events = req.body.entry[0].messaging;
+     winston.log('info', events);
     for (let i = 0; i < events.length; i++) {
-        console.log("track EVENT");
+       
        
         let event = events[i];
-         console.log(event); 
+        
         let sender = event.sender.id;
         if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
             sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
