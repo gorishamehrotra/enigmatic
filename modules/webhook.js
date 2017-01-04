@@ -145,6 +145,7 @@ let handlePost = (req, res) => {
         };
     threadSettings(greetingText);
     let events = req.body.entry[0].messaging;
+    console.log(req.body);
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
         let sender = event.sender.id;
