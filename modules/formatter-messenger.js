@@ -16,8 +16,7 @@ let formatAccounts = accounts => {
                 "url": "https://login.salesforce.com/" + account.getId(),
                 "title": "Open in Salesforce"
             },
-],  
-"input":""
+]
         })
     );
     return {
