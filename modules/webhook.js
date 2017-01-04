@@ -55,29 +55,7 @@ let processText = (text, sender)  => {
     let match;
     match = text.match(/help/i);
     if (match) {
-        sendMessage(
-        {
-            "attachment":{
-              "type":"template",
-              "payload":{
-                "template_type":"button",
-                "text":"What do you want to do next?",
-                "buttons":[
-                  {
-                    "type":"web_url",
-                    "url":"https://petersapparel.parseapp.com",
-                    "title":"Show Website"
-                  },
-                  {
-                    "type":"postback",
-                    "title":"Start Chatting",
-                    "payload":"USER_DEFINED_PAYLOAD"
-                  }
-                ]
-              }
-            }
-          }
-        , sender);
+        sendMessage(formatformatCaseQuestion(), sender);
         return;
     }
 
@@ -86,6 +64,12 @@ let processText = (text, sender)  => {
     // Search Acme in accounts
     // Search contact Smith
     // What are my top 3 opportunities?
+    match = text.match("Show Case");
+
+    if (match) {
+        sendMessage({text: 'Please enter your 8 digit Case Number'}, sender);
+        return;
+    }
 
      match = text.match(/\d/i);
     if (match) {

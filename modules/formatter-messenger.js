@@ -69,6 +69,29 @@ let formatCases = accounts => {
     };
 };
 
+let formatCaseQuestion = ()=>{
+    return {
+        "attachment":{
+          "type":"template",
+          "payload":{
+            "template_type":"button",
+            "text":"What do you want to do next?",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://petersapparel.parseapp.com",
+                "title":"Show Website"
+              },
+              {
+                "type":"postback",
+                "title":"Start Chatting",
+                "payload":"USER_DEFINED_PAYLOAD"
+              }
+            ]
+          }
+        }
+    };
+};
 
 let formatContacts = contacts => {
     let elements = [];
@@ -140,4 +163,5 @@ let formatOpportunities = opportunities => {
 exports.formatAccounts = formatAccounts;
 exports.formatContacts = formatContacts;
 exports.formatCases = formatCases;
+exports.formatCaseQuestion = formatCaseQuestion;
 exports.formatOpportunities = formatOpportunities;
