@@ -49,12 +49,12 @@ let formatAccounts = accounts => {
 //         }
 //     };
 // };
-let formatCases = cases => {
+let formatCases = accounts => {
     let elements = [];
-    cases.forEach(case =>
+    accounts.forEach(account =>
         elements.push({
-            title: case.get("Reason"),
-            subtitle: case.get("Subject") + ", " + case.get("ClosedDate") + " " + case.get("CreatedDate") 
+            title: account.get("Reason"),
+            subtitle: account.get("Subject") + ", " + account.get("ClosedDate") + " " + account.get("CreatedDate") 
             
         })
     );
