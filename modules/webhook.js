@@ -5,7 +5,18 @@ let request = require('request'),
     formatter = require('./formatter-messenger'),
     winston = require('winston'),
       path = require('path');
-    
+    var logger = new (winston.Logger)({
+      transports: [
+        new (winston.transports.Console)({ json: false, timestamp: true }),
+        new winston.transports.File({ filename: __dirname + '/debug.log', json: false })
+      ],
+      exceptionHandlers: [
+        new (winston.transports.Console)({ json: false, timestamp: true }),
+        new winston.transports.File({ filename: __dirname + '/exceptions.log', json: false })
+      ],
+      exitOnError: false
+    });
+
 
 let sendMessage = (message, recipient) => {
     request({
@@ -84,7 +95,7 @@ let handleGet = (req, res) => {
 };
 
 let handlePost = (req, res) => {
-   
+    logger.info(req);
     let events = req.body.entry[0].messaging;
     winston.log('info', 'Hello distributed log files!'); 
      winston.log('info', events);
@@ -117,6 +128,6 @@ let handlePost = (req, res) => {
     }
     res.sendStatus(200);
 };
-winston.add(winston.transports.File, { filename: path.join(__dirname + '/winston.log') });
+
 exports.handleGet = handleGet;
 exports.handlePost = handlePost;
