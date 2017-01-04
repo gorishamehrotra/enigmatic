@@ -30,12 +30,31 @@ let formatAccounts = accounts => {
     };
 };
 
-let formatCases = cases => {
+// let formatCases = cases => {
+//     let elements = [];
+//     cases.forEach(case => {
+//         elements.push({
+//             title: case.get("Subject"),
+//             subtitle: case.get("Reason") + ", " + case.get("ClosedDate") + " " + case.get("CreatedDate") 
+//           })
+//     }
+//     );
+//     return {
+//         "attachment": {
+//             "type": "template",
+//             "payload": {
+//                 "template_type": "generic",
+//                 "elements": elements
+//             }
+//         }
+//     };
+// };
+let formatCases = accounts => {
     let elements = [];
-    cases.forEach(case =>
-    elements.push({
-        title: case.get("Subject"),
-        subtitle: case.get("Reason") + ", " + case.get("ClosedDate") + " " + case.get("CreatedDate") 
+    accounts.forEach(account =>
+        elements.push({
+            title: account.get("Subject")
+            
         })
     );
     return {
