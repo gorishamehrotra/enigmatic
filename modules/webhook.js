@@ -85,7 +85,7 @@ let handleGet = (req, res) => {
 let handlePost = (req, res) => {
    
     let events = req.body.entry[0].messaging;
-    winston.log('info', 'Hello distributed log files!');
+    winston.log('info', 'Hello distributed log files!'); 
      winston.log('info', events);
     for (let i = 0; i < events.length; i++) {
        
