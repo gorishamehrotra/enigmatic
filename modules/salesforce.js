@@ -111,6 +111,7 @@ login();
 
 exports.org = org;
 exports.findAccount = findAccount;
+exports.findCase = findCase;
 exports.findContact = findContact;
 exports.findContactsByAccount = findContactsByAccount;
 exports.getTopOpportunities = getTopOpportunities;
