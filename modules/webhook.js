@@ -67,6 +67,7 @@ let processText = (text, sender)  => {
     // What are my top 3 opportunities?
 
      match = text.match(/\d/i);
+     console.log(match);
     if (match) {
         salesforce.findCase(match[1]).then(cases => {
             sendMessage({text: `Here are the cases I found matching "${match[1]}":`}, sender);
