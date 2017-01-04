@@ -55,8 +55,8 @@ let processText = (text, sender)  => {
     let match;
     match = text.match(/help/i);
     if (match) {
-        sendMessage({
-        "message":{
+        sendMessage(
+        {
             "attachment":{
               "type":"template",
               "payload":{
@@ -77,7 +77,7 @@ let processText = (text, sender)  => {
               }
             }
           }
-        }, sender);
+        , sender);
         return;
     }
 
