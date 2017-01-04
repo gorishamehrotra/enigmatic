@@ -56,12 +56,22 @@ let processText = (text, sender)  => {
     match = text.match(/help/i);
     if (match) {
         sendMessage({text:
-            `You can ask me things like:
-    Search account Acme
-    Search Acme in accounts
-    Search contact Smith
-    What are my top 3 opportunities?
-        `}, sender);
+        'Dear {{user_first_name}}  please enter your 8 digit case number'}, sender);
+        return;
+    }
+
+    //You can ask me things like:
+    // Search account Acme
+    // Search Acme in accounts
+    // Search contact Smith
+    // What are my top 3 opportunities?
+
+     match = text.match(/\d/i);
+    if (match) {
+        salesforce.findCase(match[1]).then(cases => {
+            sendMessage({text: `Here are the cases I found matching "${match[1]}":`}, sender);
+            sendMessage(formatter.formatCases(cases), sender)
+        });
         return;
     }
 

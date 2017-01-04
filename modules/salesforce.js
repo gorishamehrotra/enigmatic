@@ -42,6 +42,21 @@ let findAccount = name => {
 
 };
 
+let findCase = caseId => {
+        return new Promise((resolve,reject) => {
+            Let q = "SELECT Subject , ClosedDate, CreatedDate, Reason  Reason FROM Case WHERE CaseNumber  =  '" + caseId + "'";
+            org.query({query: q}, (err, resp) => {
+            if (err) {
+                reject("An error as occurred");
+            } else if (resp.records && resp.records.length>0) {
+                let cases = resp.records;
+                resolve(cases);
+            }
+        });
+        });
+
+};
+
 let findContact = name => {
 
     return new Promise((resolve, reject) => {

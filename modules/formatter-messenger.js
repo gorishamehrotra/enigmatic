@@ -30,6 +30,26 @@ let formatAccounts = accounts => {
     };
 };
 
+let formatCases = cases => {
+    let elements = [];
+    cases.forEach(case =>
+        elements.push({
+            title: case.get("Subject"),
+            subtitle: case.get("Reason") + ", " + case.get("ClosedDate") + " " + case.get("CreatedDate") 
+          })
+    );
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": elements
+            }
+        }
+    };
+};
+
+
 let formatContacts = contacts => {
     let elements = [];
     contacts.forEach(contact => {
@@ -99,4 +119,5 @@ let formatOpportunities = opportunities => {
 
 exports.formatAccounts = formatAccounts;
 exports.formatContacts = formatContacts;
+exports.formatCases = formatCases;
 exports.formatOpportunities = formatOpportunities;
