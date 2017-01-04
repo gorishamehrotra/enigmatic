@@ -78,13 +78,13 @@ let formatCaseQuestion = ()=>{
             "text":"What do you want to do next?",
             "buttons":[
               {
-                "type":"web_url",
-                "url":"https://petersapparel.parseapp.com",
-                "title":"Show Website"
+                "type":"postback",
+                "title":"Show Case",
+                "payload":"USER_DEFINED_PAYLOAD"
               },
               {
                 "type":"postback",
-                "title":"Start Chatting",
+                "title":"Create Case",
                 "payload":"USER_DEFINED_PAYLOAD"
               }
             ]
